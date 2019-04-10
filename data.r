@@ -1,0 +1,12 @@
+data <- read.csv("~/chandu/data_weather_prediction_ml/pre_data.csv")
+library(caTools)
+split <- sample.split(data, SplitRatio=0.8)
+split
+training <- subset(data,split=="TRUE")
+testing <- subset(data,split=="FALSE")
+model <- lm(Temp. ~. ,data = training)
+summary(model)
+res <- predict(model,testing)
+actuals_preds <- data.frame(cbind(actuals=testing$Temp., predicteds=res)) 
+correlation_accuracy <- cor(actuals_preds)
+print(correlation_accuracy)
