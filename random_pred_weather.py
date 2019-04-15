@@ -41,6 +41,7 @@ rf.fit(train_data, train_target)
 
 test_pred = rf.predict(test_data)
 
+
 errors = abs(test_pred - test_target)
 
 print('Mean Absolute Error:', round(np.mean(errors), 2), 'degrees.')
